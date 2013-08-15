@@ -1,0 +1,128 @@
+<!DOCTYPE html> 
+<html data-ng-app="App">
+  <head>
+    <link rel="stylesheet" type="text/css" href="./example.animate.css" />
+    <title>Animate.css Testing Article</title>
+    <style type="text/css">
+      .element {
+        background:#eee;
+        height:200px;
+        border:1px solid black;
+      }
+      body {
+        background:#ddd;
+      }
+      section { 
+        margin:1em;
+        padding:1em;
+        border:1px solid #ddd;
+      }
+    </style>
+  </head>
+
+  <body>
+    <section>
+      <h2>.fade</h2>
+      <button ng-click="fade=!fade">Toggle Class</button>
+      <div class="element" ng-class="{fade:fade}">
+        ...
+      </div>
+    </section>
+
+    <section>
+      <h2>.fade-up</h2>
+      <button ng-click="fade_up=!fade_up">Toggle Class</button>
+      <div class="element" ng-class="{'fade-up':fade_up}">
+        ...
+      </div>
+    </section>
+
+    <section>
+      <h2>.fade-down</h2>
+      <button ng-click="fade_down=!fade_down">Toggle Class</button>
+      <div class="element" ng-class="{'fade-down':fade_down}">
+        ...
+      </div>
+    </section>
+
+    <section>
+      <h2>.fade-left</h2>
+      <button ng-click="fade_left=!fade_left">Toggle Class</button>
+      <div class="element" ng-class="{'fade-left':fade_left}">
+        ...
+      </div>
+    </section>
+
+    <section>
+      <h2>.fade-right</h2>
+      <button ng-click="fade_right=!fade_right">Toggle Class</button>
+      <div class="element" ng-class="{'fade-right':fade_right}">
+        ...
+      </div>
+    </section>
+
+    <section>
+      <h2>.flip-x</h2>
+      <button ng-click="flip_x=!flip_x">Toggle Class</button>
+      <div class="element" ng-class="{'flip-x':flip_x}">
+        ...
+      </div>
+    </section>
+
+    <section>
+      <h2>.flip-y</h2>
+      <button ng-click="flip_y=!flip_y">Toggle Class</button>
+      <div class="element" ng-class="{'flip-y':flip_y}">
+        ...
+      </div>
+    </section>
+
+    <section>
+      <h2>.bounce</h2>
+      <button ng-click="bounce=!bounce">Toggle Class</button>
+      <div class="element" ng-class="{bounce:bounce}">
+        ...
+      </div>
+    </section>
+
+    <section>
+      <h2>.bounce-up</h2>
+      <button ng-click="bounce_up=!bounce_up">Toggle Class</button>
+      <div class="element" ng-class="{'bounce-up':bounce_up}">
+        ...
+      </div>
+    </section>
+
+    <section>
+      <h2>.bounce-down</h2>
+      <button ng-click="bounce_down=!bounce_down">Toggle Class</button>
+      <div class="element" ng-class="{'bounce-down':bounce_down}">
+        ...
+      </div>
+    </section>
+
+    <section>
+      <h2>.bounce-left</h2>
+      <button ng-click="bounce_left=!bounce_left">Toggle Class</button>
+      <div class="element" ng-class="{'bounce-left':bounce_left}">
+        ...
+      </div>
+    </section>
+
+    <section>
+      <h2>.bounce-right</h2>
+      <button ng-click="bounce_right=!bounce_right">Toggle Class</button>
+      <div class="element" ng-class="{'bounce-right':bounce_right}">
+        ...
+      </div>
+    </section>
+
+
+    <script type="text/javascript" src="http://code.angularjs.org/1.2.0rc1/angular.js"></script>
+    <script type="text/javascript" src="http://code.angularjs.org/1.2.0rc1/angular-animate.js"></script>
+    <script type="text/javascript" src="./animate.js"></script>
+    <script type="text/javascript">
+      angular.module('App', ['ngAnimate-animate.css']);
+    </script>
+  <body>
+</html>
