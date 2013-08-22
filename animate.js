@@ -15,6 +15,12 @@ angular.module('ngAnimate-animate.css', ['ngAnimate'])
         };
       }
       var animateCSSStart = function(element, className, delay, done) {
+        if(element.hasClass('ng-hide') && className.match(/Out/) ) {
+          element.attr('style', 'display: block !important');
+          $timeout(function() {
+            element.removeAttr('style');
+          }, delay || 2000, false);
+        }
         element.addClass(className);
         element.addClass('animated');
         $timeout(done, delay || 2000, false);
