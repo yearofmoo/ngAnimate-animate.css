@@ -40,7 +40,7 @@ Once installed, animations can be performed by attaching the following CSS class
 - **.dn-bounce-left** (runs bounceInLeft for enter, move and show, runs bounceOutLeft for leave and hide)
 - **.dn-bounce-right** (runs bounceInRight for enter, move and show, runs bounceOutRight for leave and hide)
 
-### Bounce Animations
+### Rotate Animations
 - **.dn-rotate** (runs rotateIn for enter, move and show, runs rotateOut for leave and hide)
 - **.dn-rotate-down-left** (runs rotateInDownLeft for enter, move and show, runs rotateOutDownLeft for leave and hide)
 - **.dn-rotate-down-right** (runs rotateInDownRight for enter, move and show, runs rotateOutDownRight for leave and hide)
