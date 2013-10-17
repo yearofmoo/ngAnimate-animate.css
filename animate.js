@@ -15,13 +15,20 @@ angular.module('ngAnimate-animate.css', ['ngAnimate'])
           removeClass : b
         };
       }
+      var timeoutKey = '$$animate.css-timer';
       var animateCSSStart = function(element, className, delay, done) {
         element.addClass(className);
         element.addClass('animated');
-        $timeout(done, delay || 2000, false);
+        var timer = $timeout(done, delay || 2000, false);
+        element.data(timeoutKey, timer);
       };
       var animateCSSEnd = function(element, className) {
         return function(cancelled) {
+          var timer = element.data(timeoutKey);
+          if(timer) {
+            $timeout.cancel(timer);
+            element.removeData(timeoutKey);
+          }
           element.removeClass(className);
           element.removeClass('animated');
         };
