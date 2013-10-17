@@ -1,6 +1,6 @@
 angular.module('ngAnimate-animate.css', ['ngAnimate'])
 
-  .factory('animateCSSBuild', ['$timeout', function($timeout) {
+  .factory('animateCSSBuild', ['-animation','$timeout', function(css3Animation, $timeout) {
     return function(baseClass, classNames) {
       if(arguments.length == 3) {
         var a = classNames;
@@ -15,29 +15,29 @@ angular.module('ngAnimate-animate.css', ['ngAnimate'])
           removeClass : b
         };
       }
-      var animateCSSStart = function(element, className, delay, done) {
+      var animateCSSStart = function(element, className) {
         element.addClass(className);
         element.addClass('animated');
-        $timeout(done, delay || 2000, false);
       };
-      var animateCSSEnd = function(element, className) {
-        return function(cancelled) {
+      var animateCSSEnd = function(element, className, done) {
+        return function() {
           element.removeClass(className);
           element.removeClass('animated');
-        };
+          done();
+        }
       };
       return {
         enter : function(element, done) {
-          animateCSSStart(element, classNames.enter, classNames.delay, done);
-          return animateCSSEnd(element, classNames.enter);
+          animateCSSStart(element, classNames.enter);
+          return animateCSSEnd(element, classNames.enter, css3Animation.enter(element, done));
         },
         leave : function(element, done) {
-          animateCSSStart(element, classNames.leave, classNames.delay, done);
-          return animateCSSEnd(element, classNames.leave);
+          animateCSSStart(element, classNames.leave);
+          return animateCSSEnd(element, classNames.leave, css3Animation.leave(element, done));
         },
         move : function(element, done) {
-          animateCSSStart(element, classNames.move, classNames.delay, done);
-          return animateCSSEnd(element, classNames.move);
+          animateCSSStart(element, classNames.move);
+          return animateCSSEnd(element, classNames.move, css3Animation.move(element, done));
         },
         addClass : function(element, className, done) {
           var klass = className == 'hide' && classNames.hide ?
@@ -46,8 +46,8 @@ angular.module('ngAnimate-animate.css', ['ngAnimate'])
               (angular.noop || classNames.addClass(className)) :
               classNames.addClass;
           if(className == baseClass) {
-            animateCSSStart(element, klass, classNames.delay, done);
-            return animateCSSEnd(element, klass);
+            animateCSSStart(element, klass);
+            return animateCSSEnd(element, klass, css3Animation.addClass(element, klass, done));
           }
           else {
             done();
@@ -60,8 +60,8 @@ angular.module('ngAnimate-animate.css', ['ngAnimate'])
               (angular.noop || classNames.removeClass(className)) :
               classNames.removeClass;
           if(className == baseClass) {
-            animateCSSStart(element, klass, classNames.delay, done);
-            return animateCSSEnd(element, klass);
+            animateCSSStart(element, klass);
+            return animateCSSEnd(element, klass, css3Animation.removeClass(element, klass, done));
           }
           else {
             done();
