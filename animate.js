@@ -52,7 +52,7 @@ angular.module('ngAnimate-animate.css', ['ngAnimate'])
           animateCSSStart(element, classNames.move, classNames.delay, done);
           return animateCSSEnd(element, classNames.move);
         },
-        addClass : function(element, className, done) {
+        beforeAddClass : function(element, className, done) {
           var klass = className == 'hide' && classNames.hide ?
             classNames.hide :
             angular.isFunction(classNames.addClass) ?
@@ -67,14 +67,24 @@ angular.module('ngAnimate-animate.css', ['ngAnimate'])
           }
         },
         removeClass : function(element, className, done) {
-          var klass = className == 'hide' && classNames.show ?
-            classNames.show :
-            angular.isFunction(classNames.removeClass) ?
-              (angular.noop || classNames.removeClass(className)) :
-              classNames.removeClass;
-          if(className == baseClass) {
+          if(className == 'hide') {
+            var klass = classNames.show;
             animateCSSStart(element, klass, classNames.delay, done);
             return animateCSSEnd(element, klass);
+          }
+          else {
+            done();
+          }
+        },
+        beforeRemoveClass : function(element, className, done) {
+          if(className != 'hide') {
+            var klass = angular.isFunction(classNames.removeClass) ?
+                          (angular.noop || classNames.removeClass(className)) :
+                          classNames.removeClass;
+            if(className == baseClass) {
+              animateCSSStart(element, klass, classNames.delay, done);
+              return animateCSSEnd(element, klass);
+            }
           }
           else {
             done();
