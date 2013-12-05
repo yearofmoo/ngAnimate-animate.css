@@ -189,4 +189,4 @@ angular.module('ngAnimate-animate.css', ['ngAnimate'])
 
   .animation('.dn-hinge', ['animateCSSBuild', function(animateCSSBuild) {
     return animateCSSBuild('dn-hinge','fadeIn','hinge');
-  }])
+  }]);
