@@ -1,8 +1,8 @@
 # ngAnimate-animate.css Module
 
-## WIP
+## Requirements
 
-This is a work in progress at the moment and is still being tested.
+AngularJS 1.2.3+ (it should also work with 1.2.0 and 1.2.1, but 1.2.2 does not work. Please use 1.2.3 or higher for best results).
 
 ## Installation
 
