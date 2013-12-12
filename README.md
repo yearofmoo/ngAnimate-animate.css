@@ -13,7 +13,7 @@ AngularJS 1.2.3+ (it should also work with 1.2.0 and 1.2.1, but 1.2.2 does not w
 
 You can also use bower:
 
-```javascript
+```bash
 # this should install v0.1.1 or higher
 # and it should also include animate.css
 bower install ngAnimate-animate.css --save
