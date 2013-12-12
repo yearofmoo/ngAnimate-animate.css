@@ -22,9 +22,15 @@
 
   <body>
     <section>
-      <h2>.dn-fade</h2>
+      <h2>.dn-fade (ngClass)</h2>
       <button ng-click="dn_fade=!dn_fade">Toggle Class</button>
       <div class="element" ng-class="{'dn-fade':dn_fade}">
+        ...
+      </div>
+
+      <h2>.dn-fade (ngShow)</h2>
+      <button ng-click="dn_fade_ngShow=!dn_fade_ngShow">Toggle Show / Hide</button>
+      <div class="element dn-fade" ng-show="dn_fade_ngShow">
         ...
       </div>
     </section>

@@ -46,33 +46,39 @@ angular.module('ngAnimate-animate.css', ['ngAnimate'])
           animateCSSStart(element, classNames.move, classNames.delay, done);
           return animateCSSEnd(element, classNames.move);
         },
-        addClass : function(element, className, done) {
-          var klass = className == 'hide' && classNames.hide ?
-            classNames.hide :
-            angular.isFunction(classNames.addClass) ?
-              (angular.noop || classNames.addClass(className)) :
-              classNames.addClass;
-          if(className == baseClass) {
+        beforeAddClass : function(element, className, done) {
+          var klass = className == 'ng-hide' &&
+                      (classNames.hide ||
+                        (angular.isFunction(classNames.addClass) ?
+                          classNames.addClass(className) :
+                          classNames.addClass));
+          if(klass) {
             animateCSSStart(element, klass, classNames.delay, done);
             return animateCSSEnd(element, klass);
           }
-          else {
-            done();
+          done();
+        },
+        addClass : function(element, className, done) {
+          var klass = className != 'ng-hide' &&
+                      (angular.isFunction(classNames.addClass) ?
+                        classNames.addClass(className) :
+                        classNames.addClass);
+          if(klass) {
+            animateCSSStart(element, klass, classNames.delay, done);
+            return animateCSSEnd(element, klass);
           }
+          done();
         },
         removeClass : function(element, className, done) {
-          if(className != 'hide') {
-            var klass = angular.isFunction(classNames.removeClass) ?
-                          (angular.noop || classNames.removeClass(className)) :
-                          classNames.removeClass;
-            if(className == baseClass) {
-              animateCSSStart(element, klass, classNames.delay, done);
-              return animateCSSEnd(element, klass);
-            }
+          var klass = (className == 'ng-hide' && classNames.show) ||
+                      (angular.isFunction(classNames.removeClass) ?
+                        classNames.removeClass(className) :
+                        classNames.removeClass);
+          if(klass) {
+            animateCSSStart(element, klass, classNames.delay, done);
+            return animateCSSEnd(element, klass);
           }
-          else {
-            done();
-          }
+          done();
         }
       }
     };
