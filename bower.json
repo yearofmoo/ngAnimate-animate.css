@@ -1,6 +1,6 @@
 {
   "name": "ngAnimate-animate.css",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "homepage": "https://github.com/yearofmoo/ngAnimate-animate.css",
   "authors": [
     "yearofmoo <contact@yearofmoo.com>"
@@ -22,7 +22,8 @@
     "tests"
   ],
   "dependencies": {
-    "angular": "1.2.4",
-    "angular-animate": "1.2.4"
+    "angular": "latest",
+    "angular-animate": "latest",
+    "animate.css": "latest"
   }
 }
